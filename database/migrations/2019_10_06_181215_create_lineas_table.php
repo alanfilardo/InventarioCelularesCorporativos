@@ -15,7 +15,7 @@ class CreateLineasTable extends Migration
     {
         Schema::create('lineas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('NumeroLinea');
+            $table->integer('NumeroLinea')->unique();
             $table->boolean('Asignado')->default(false);
             $table->timestamps();
         });
