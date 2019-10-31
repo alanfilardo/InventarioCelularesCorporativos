@@ -1,0 +1,29 @@
+.formularioflex{
+    display: flex;
+    justify-content: center;
+}
+.formularioizquierdo{
+    display: block;
+    width: 100%;
+}
+
+.formulariocentro{
+    display: block;
+    width: 100%;
+}
+
+.formularioderecho{
+    display: block;
+    width: 100%;
+}
+
+.bloque{
+    display: block;
+    margin: 5px auto;
+    width: 80%;
+}
+
+.boton{
+    width: 6%;
+    margin-top: 5px;
+}
