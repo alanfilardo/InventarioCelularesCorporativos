@@ -18,7 +18,8 @@ class Controller extends BaseController
 
     public function index()
     {
+        $Busqueda=1;
         $Clientes = Clientes::orderBy('apellidocliente', 'asc')->paginate(6);
-        return view('index', compact('Clientes'));
+        return view('index', compact('Clientes', 'Busqueda'));
     }
 }

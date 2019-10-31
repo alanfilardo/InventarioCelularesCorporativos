@@ -18,7 +18,9 @@
       <option value="4">Buscar por: IMEI</option>
     </select>
 </form>
-
+@if ($Busqueda == 0)
+<p class="text-danger">No se encontraron resultados.</p>    
+@endif
 @endsection
 
 @section('ApartadoTitulo')

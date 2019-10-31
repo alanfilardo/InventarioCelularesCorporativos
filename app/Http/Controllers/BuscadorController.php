@@ -22,21 +22,31 @@ class BuscadorController extends Controller
                                         ->paginate(6);
 
                     if ($Clientes->isEmpty()){
-                        return redirect()->route('inicio');
+                        $Busqueda = 0;
+                        $Clientes = Clientes::orderBy('apellidocliente', 'asc')->paginate(6);
+                        return view('index', compact('Clientes', 'Busqueda'));
+                        
+                        //return redirect()->route('inicio')->with( ['busqueda' => $merchant] );
                     } else {
-                        return view('index', compact('Clientes'));
+                        $Busqueda = 1;
+                        return view('index', compact('Clientes', 'Busqueda'));
                     }
                     break;
                 case 2:
                     $Lineas = Lineas::where('NumeroLinea', 'like', '%'.$request->dato_buscado.'%')->first();
                     if ($Lineas == null){
-                        return redirect()->route('inicio');
+                        $Busqueda = 0;
+                        $Clientes = Clientes::orderBy('apellidocliente', 'asc')->paginate(6);
+                        return view('index', compact('Clientes', 'Busqueda'));
                     } else {
                         $Clientes = Clientes::where('lineaid', $Lineas->id)->paginate(6);
                         if ($Clientes == null){
-                            return redirect()->route('inicio');
+                            $Busqueda = 0;
+                            $Clientes = Clientes::orderBy('apellidocliente', 'asc')->paginate(6);
+                            return view('index', compact('Clientes', 'Busqueda'));
                         } else {
-                            return view('index', compact('Clientes'));
+                            $Busqueda = 1;
+                            return view('index', compact('Clientes', "Busqueda"));
                         }
                     }
                     
@@ -46,26 +56,36 @@ class BuscadorController extends Controller
                             ->orwhere('cuentasamsung', 'like', '%'.$request->dato_buscado.'%')
                             ->orwhere('cuentaapple', 'like', '%'.$request->dato_buscado.'%')->first();
                             if ($Cuenta == null){
-                                return redirect()->route('inicio');
+                                $Busqueda = 0;
+                                $Clientes = Clientes::orderBy('apellidocliente', 'asc')->paginate(6);
+                                return view('index', compact('Clientes', 'Busqueda'));
                             } else {
                                 $Clientes = Clientes::where('id', $Cuenta->clienteid)->paginate(6);
                                 if ($Clientes == null){
-                                    return redirect()->route('inicio');
+                                    $Busqueda = 0;
+                                    $Clientes = Clientes::orderBy('apellidocliente', 'asc')->paginate(6);
+                                    return view('index', compact('Clientes', 'Busqueda'));
                                 } else {
-                                    return view('index', compact('Clientes'));
+                                    $Busqueda=1;
+                                    return view('index', compact('Clientes', 'Busqueda'));
                                 }
                             }
                     break;
                 case 4:
                     $IMEI = Equipos::where('imei', 'like', '%'.$request->dato_buscado.'%')->first();
                     if ($IMEI == null){
-                        return redirect()->route('inicio');
+                        $Busqueda = 0;
+                        $Clientes = Clientes::orderBy('apellidocliente', 'asc')->paginate(6);
+                        return view('index', compact('Clientes', 'Busqueda'));
                     } else {
                         $Clientes = Clientes::where('equipoid', $IMEI->id)->paginate(6);
                         if ($Clientes == null){
-                            return redirect()->route('inicio');
+                            $Busqueda = 0;
+                            $Clientes = Clientes::orderBy('apellidocliente', 'asc')->paginate(6);
+                            return view('index', compact('Clientes', 'Busqueda'));
                         } else {
-                            return view('index', compact('Clientes'));
+                            $Busqueda=1;
+                            return view('index', compact('Clientes', 'Busqueda'));
                         }
                     }
                     break;
