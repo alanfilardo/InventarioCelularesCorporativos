@@ -3,7 +3,7 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
 
-      <!-- search form -->
+      <!-- search form 
     <form action="" method="" class="sidebar-form" autocomplete="off">
       @csrf
         <div class="input-group">
@@ -13,11 +13,21 @@
                 </button>
               </span>
         </div>
-      </form>
+      </form>-->
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
+        
         <li class="header">INVENTARIO</li>
+
+        <li>
+        <a href="{{route('inicio')}}">
+              <i class="fa fa-home"></i> <span>Inicio</span>
+              <span class="pull-right-container">
+              </span>
+            </a>
+          </li> 
+
 
         <li class="treeview">
             <a href="#">
