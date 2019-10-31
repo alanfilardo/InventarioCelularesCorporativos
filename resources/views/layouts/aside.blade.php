@@ -4,7 +4,7 @@
     <section class="sidebar">
 
       <!-- search form -->
-    <form action="" method="post" class="sidebar-form" autocomplete="off">
+    <form action="" method="" class="sidebar-form" autocomplete="off">
       @csrf
         <div class="input-group">
           <input id="texto" type="text" name="Buscador" class="form-control" placeholder="Buscar..." id="caja_busqueda">
