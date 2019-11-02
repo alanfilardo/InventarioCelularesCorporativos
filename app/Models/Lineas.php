@@ -11,7 +11,7 @@ class Lineas extends Model
     protected $guarded = ['id'];
 
     public function cliente(){
-        return $this->belongsTo(Clientes::class, 'lineas_id');
+        return $this->belongsTo(Clientes::class, 'id');
     }
 }
 

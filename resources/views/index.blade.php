@@ -5,7 +5,7 @@
 @endsection
 @section('Buscador')
 
-<form action="{{route('buscar_clientes')}}" method="post" class="col-xs-12 col-sm-10 col-md-8 input-group input-group-sm" style="margin-top: 1em;" >
+<form autocomplete="off" action="{{route('buscar_clientes')}}" method="post" class="col-xs-12 col-sm-10 col-md-8 input-group input-group-sm" style="margin-top: 1em;" >
   @csrf  
   <input type="text" class="form-control" name="dato_buscado">
     <span class="input-group-btn">
@@ -51,6 +51,9 @@
     </tr>
     @endforeach
 </tbody>
-</table>  
+</table> 
+@if ($Busqueda == 3 or $Busqueda == 0)
 {{$Clientes->links()}}
+@endif 
+
 @endsection

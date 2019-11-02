@@ -33,21 +33,20 @@ class BuscadorController extends Controller
                     }
                     break;
                 case 2:
-                    $Lineas = Lineas::where('NumeroLinea', 'like', '%'.$request->dato_buscado.'%')->first();
-                    if ($Lineas == null){
+                    $Lineas = Lineas::where('NumeroLinea', 'like', '%'.$request->dato_buscado.'%')->get();
+                    if ($Lineas->count() == 0){
                         $Busqueda = 0;
                         $Clientes = Clientes::orderBy('apellidocliente', 'asc')->paginate(6);
                         return view('index', compact('Clientes', 'Busqueda'));
                     } else {
-                        $Clientes = Clientes::where('lineaid', $Lineas->id)->paginate(6);
-                        if ($Clientes == null){
-                            $Busqueda = 0;
-                            $Clientes = Clientes::orderBy('apellidocliente', 'asc')->paginate(6);
-                            return view('index', compact('Clientes', 'Busqueda'));
-                        } else {
-                            $Busqueda = 1;
-                            return view('index', compact('Clientes', "Busqueda"));
+                        $Clientes = collect([]);
+                        foreach ($Lineas as $Linea){
+                            $Clientes->push($Linea->cliente);  
                         }
+                        //SOLO TOMO 6 CLIENTES PARA MOSTRAR PORQUE NO SE PUEDE PAGINAR UNA COLECCION CREADA.
+                        $Clientes = $Clientes->take(6);
+                        $Busqueda = 1;
+                        return view('index', compact('Clientes', "Busqueda"));
                     }
                     
                     break;

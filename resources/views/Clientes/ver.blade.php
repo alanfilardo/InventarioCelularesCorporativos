@@ -18,6 +18,9 @@
         
         <label style="display:none; class="bloque" for="ApellidoCliente">Apellido:</label>
         <input style="display:none; disabled class="bloque" type="text" name="ApellidoCliente" value="{{$Cliente->apellidocliente}}" required placeholder="Ej: Filardo">
+       
+        <label class="bloque" for="SucursalCliente">Pais:</label>
+        <input disabled type="text" class="bloque" value="{{ ((($Cliente->sucursal)->provincias)->paises)->NombrePais }}">
 
         <label class="bloque" for="SucursalCliente">Sucursal:</label>
         <input disabled type="text" class="bloque" value="{{ ($Cliente->sucursal)->NombreSucursal }}">
