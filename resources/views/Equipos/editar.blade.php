@@ -9,6 +9,9 @@
 @endsection
 
 @section('Contenido')
+<div class="contenedor-cancelar">
+  <a class="btn btn-success boton-agregar" href="{{route('equipos')}}" style="float: right;">Cancelar</a>
+</div>
 <form autocomplete="off" action="{{route('actualizar_equipo', ["id" => $Equipo->id])}}" method="post" name="formularioEquipoCrear" class="formulario">
         @csrf
 
@@ -30,7 +33,7 @@
 
         <label for="imeiInput">IMEI</label>
         <input type="text" class="inputForm" name="imei" id="imeiInput" value="{{$Equipo->imei}}" required placeholder="Ej: 354688065202743">
-        <input type="submit" value="Crear">
+        <input type="submit" value="Editar">
     </form>
 @endsection
 

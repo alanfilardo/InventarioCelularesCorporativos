@@ -9,6 +9,9 @@
 @endsection
 
 @section('Contenido')
+<div class="contenedor-cancelar">
+    <a class="btn btn-success boton-agregar" href="{{route('clientes')}}" style="float: right;">Cancelar</a>
+</div>
     <form autocomplete="off" action="{{route('actualizar_cliente', ["id" => $Cliente->id])}}" method="POST" name="formularioClienteCrear" class="" id="formulario_general">
         @csrf
     <div class="formularioflex">

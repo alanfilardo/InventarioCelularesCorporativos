@@ -19,11 +19,11 @@ class BuscadorController extends Controller
                 case 1:
                     $Clientes = Clientes::where('nombrecliente','like', '%'.$request->dato_buscado.'%')
                                         ->orwhere('apellidocliente','like', '%'.$request->dato_buscado.'%')
-                                        ->paginate(6);
+                                        ->paginate(5);
 
                     if ($Clientes->isEmpty()){
                         $Busqueda = 0;
-                        $Clientes = Clientes::orderBy('apellidocliente', 'asc')->paginate(6);
+                        $Clientes = Clientes::orderBy('apellidocliente', 'asc')->paginate(5);
                         return view('index', compact('Clientes', 'Busqueda'));
                         
                         //return redirect()->route('inicio')->with( ['busqueda' => $merchant] );
@@ -36,7 +36,7 @@ class BuscadorController extends Controller
                     $Lineas = Lineas::where('NumeroLinea', 'like', '%'.$request->dato_buscado.'%')->get();
                     if ($Lineas->count() == 0){
                         $Busqueda = 0;
-                        $Clientes = Clientes::orderBy('apellidocliente', 'asc')->paginate(6);
+                        $Clientes = Clientes::orderBy('apellidocliente', 'asc')->paginate(5);
                         return view('index', compact('Clientes', 'Busqueda'));
                     } else {
                         $Clientes = collect([]);
@@ -44,7 +44,7 @@ class BuscadorController extends Controller
                             $Clientes->push($Linea->cliente);  
                         }
                         //SOLO TOMO 6 CLIENTES PARA MOSTRAR PORQUE NO SE PUEDE PAGINAR UNA COLECCION CREADA.
-                        $Clientes = $Clientes->take(6);
+                        $Clientes = $Clientes->take(5);
                         $Busqueda = 1;
                         return view('index', compact('Clientes', "Busqueda"));
                     }
@@ -56,13 +56,13 @@ class BuscadorController extends Controller
                             ->orwhere('cuentaapple', 'like', '%'.$request->dato_buscado.'%')->first();
                             if ($Cuenta == null){
                                 $Busqueda = 0;
-                                $Clientes = Clientes::orderBy('apellidocliente', 'asc')->paginate(6);
+                                $Clientes = Clientes::orderBy('apellidocliente', 'asc')->paginate(5);
                                 return view('index', compact('Clientes', 'Busqueda'));
                             } else {
-                                $Clientes = Clientes::where('id', $Cuenta->clienteid)->paginate(6);
+                                $Clientes = Clientes::where('id', $Cuenta->clienteid)->paginate(5);
                                 if ($Clientes == null){
                                     $Busqueda = 0;
-                                    $Clientes = Clientes::orderBy('apellidocliente', 'asc')->paginate(6);
+                                    $Clientes = Clientes::orderBy('apellidocliente', 'asc')->paginate(5);
                                     return view('index', compact('Clientes', 'Busqueda'));
                                 } else {
                                     $Busqueda=1;
@@ -74,13 +74,13 @@ class BuscadorController extends Controller
                     $IMEI = Equipos::where('imei', 'like', '%'.$request->dato_buscado.'%')->first();
                     if ($IMEI == null){
                         $Busqueda = 0;
-                        $Clientes = Clientes::orderBy('apellidocliente', 'asc')->paginate(6);
+                        $Clientes = Clientes::orderBy('apellidocliente', 'asc')->paginate(5);
                         return view('index', compact('Clientes', 'Busqueda'));
                     } else {
-                        $Clientes = Clientes::where('equipoid', $IMEI->id)->paginate(6);
+                        $Clientes = Clientes::where('equipoid', $IMEI->id)->paginate(5);
                         if ($Clientes == null){
                             $Busqueda = 0;
-                            $Clientes = Clientes::orderBy('apellidocliente', 'asc')->paginate(6);
+                            $Clientes = Clientes::orderBy('apellidocliente', 'asc')->paginate(5);
                             return view('index', compact('Clientes', 'Busqueda'));
                         } else {
                             $Busqueda=1;
