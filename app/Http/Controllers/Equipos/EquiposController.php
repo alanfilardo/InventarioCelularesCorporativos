@@ -23,6 +23,12 @@ class EquiposController extends Controller
         return view('Equipos.index', compact('equipos'));
     }
 
+    public function stockEquipos()
+    {
+        $equipos = Equipos::where('Asignado', 0)->paginate(5);
+        return view('Equipos.index', compact('equipos'));
+    }
+
     public function indexMarcas()
     {
         $marcas = MarcasEquipos::orderBy('NombreMarca', 'asc')->paginate(5);

@@ -56,6 +56,7 @@ Route::group(['prefix' => 'equipos', 'namespace' => 'Equipos'], function () {
     Route::get('/index', 'EquiposController@indexEquipos')->name('equipos');
     Route::get('crear', 'EquiposController@createEquipos')->name('crear_equipo');
     Route::post('/guardar', 'EquiposController@storeEquipos')->name('guardar_equipo');
+    Route::post('/stock/libre', 'EquiposController@stockEquipos')->name('stock_equipos');
     Route::get('equipo/{id}', 'EquiposController@editEquipo')->name('editar_equipo');
     Route::get('/{id}', 'EquiposController@destroyEquipo')->name('eliminar_equipo');
     Route::post('/{id}', 'EquiposController@updateEquipo')->name('actualizar_equipo');

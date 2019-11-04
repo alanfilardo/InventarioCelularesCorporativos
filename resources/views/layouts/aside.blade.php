@@ -65,6 +65,7 @@
             <li><a href="{{route('crear_modelo')}}"><i class="fa fa-plus"></i>Agregar Modelo</a></li>
             <li class="header" style="color: white;">EQUIPOS</li>
             <li><a href="{{route('equipos')}}"><i class="fa fa-list-alt"></i>Listado Equipos</a></li>
+            <!--<li><a href="{{route('stock_equipos')}}"><i class="fa fa-list-alt"></i>Listado Equipos Libres</a></li>-->
             <li><a href="{{route('crear_equipo')}}"><i class="fa fa-plus"></i>Agregar Equipo</a></li>
           </ul>
         </li>
