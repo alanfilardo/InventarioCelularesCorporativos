@@ -25,6 +25,9 @@ class EditNumeroLineaOnLineas extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('lineas', function ($table) {
+            $table->integer('NumeroLinea')->unique();
+            });
+        
     }
 }
