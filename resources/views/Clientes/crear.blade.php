@@ -35,12 +35,18 @@
         </select>
 
         <label class="bloque" for="EquipoCliente">Equipo Asignar:</label>
-        <select class="bloque" name="EquipoCliente" required>
-            <option value="" selected disabled hidden>Seleccionar Equipo</option>
+        <select class="bloque" name="EquipoCliente" id="EquipoCliente" required disabled>
+            <option value="1" selected disabled hidden>Seleccionar Equipo</option>
             @foreach ($Equipos as $Equipo)
-                <option value="{{ $Equipo->id }}">{{ $Equipo->imei }}</option>
+                @if ($Equipo->id =! 1)
+                    <option value="{{ $Equipo->id }}">{{ $Equipo->imei }}</option>
+                @endif
             @endforeach
         </select>
+        
+        <label class="bloque" for="checkequipo">Equipo Propio:</label>
+        <p style="text-align: center;"><small>Destildar si el usuario posee equipo de la empresa.</small></p>
+        <input type="checkbox" name="checkequipo" id="checkequipo" style="display: block; margin: 1em auto;" checked/>
 
     </div>
     <div class="formulariocentro">
@@ -59,11 +65,18 @@
             <label class="bloque" for="ApplePassword">Password Apple:</label>
             <input class="bloque" type="text" name="ApplePassword" value="" placeholder="Ej: Password123">
             
-
+            
         
         
     </div>
     </div>
     <input class="bloque boton" type="submit" value="Crear">
     </form>
+
+
+<script>
+    document.getElementById('checkequipo').onchange = function() {
+        document.getElementById('EquipoCliente').disabled = this.checked;
+    };
+    </script>
 @endsection

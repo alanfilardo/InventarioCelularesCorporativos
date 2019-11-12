@@ -44,6 +44,10 @@ class ClientesController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->EquipoCliente == null){
+            $request->EquipoCliente = 1;
+        }
+
         $Cliente = new Clientes([
             "nombrecliente" => $request->NombreCliente,
             "apellidocliente" => $request->ApellidoCliente,
@@ -70,10 +74,22 @@ class ClientesController extends Controller
 
 
         $Cuentas->save();
-
-        Equipos::find($request->EquipoCliente)->update(['Asignado' => true]);
+        //Si el request trae un equipo a asignar diferente de uno, quiere decir que el equipo es de la empresa
+        //entonces hay que quitarlo de la lista de equipos libres.
+        if ($request->EquipoCliente =! 1){
+            Equipos::find($request->EquipoCliente)->update(['Asignado' => true]);
+        }
+        
         Lineas::find($request->LineaCliente)->update(['Asignado' => true]);
-        return redirect()->route('clientes');
+        return redirect()->route('clientes'); 
+
+
+        /*
+            if ($request->checkequipo == "on"){
+                echo "Tilde activado.";
+            } else {
+                echo "Tilde desactivado.";
+            } */
     }
 
     /**

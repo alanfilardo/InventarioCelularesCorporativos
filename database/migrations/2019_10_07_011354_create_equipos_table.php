@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Equipos;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,6 +22,12 @@ class CreateEquiposTable extends Migration
             $table->boolean('Asignado')->default(false);
             $table->timestamps();
         });
+
+        $Equipo = new Equipos([
+            'imei' => 111111111111111,
+            'ModeloEquipo_id' => 1,
+        ]);
+        $Equipo->save();
     }
 
     /**

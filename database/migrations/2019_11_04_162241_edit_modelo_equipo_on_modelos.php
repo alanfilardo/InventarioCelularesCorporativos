@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class EditNumeroLineaOnLineas extends Migration
+class EditModeloEquipoOnModelos extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,11 @@ class EditNumeroLineaOnLineas extends Migration
      * @return void
      */
     public function up()
-    {       
-        Schema::table('lineas', function ($table) {
-        $table->bigInteger('NumeroLinea')->unique()->change();
-        });
+    {
+        Schema::table('modelosequipos', function ($table) {
+            $table->string('ModeloEquipo', 100)->unique()->change();
+            });
+        
     }
 
     /**
@@ -25,8 +26,8 @@ class EditNumeroLineaOnLineas extends Migration
      */
     public function down()
     {
-        Schema::table('lineas', function ($table) {
-            $table->integer('NumeroLinea')->unique();
+        Schema::table('modelosequipos', function ($table) {
+            $table->string('ModeloEquipo', 100);
             });
         
     }

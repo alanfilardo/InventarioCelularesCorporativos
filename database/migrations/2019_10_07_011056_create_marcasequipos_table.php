@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\MarcasEquipos;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,6 +19,11 @@ class CreateMarcasequiposTable extends Migration
             $table->string('NombreMarca', 50);
             $table->timestamps();
         });
+
+        $Marca = new MarcasEquipos([
+            'NombreMarca' => 'Equipo Propio'
+        ]);
+        $Marca->save();
     }
 
     /**

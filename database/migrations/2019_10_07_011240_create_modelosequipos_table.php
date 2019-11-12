@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ModelosEquipos;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,6 +21,12 @@ class CreateModelosequiposTable extends Migration
             $table->foreign('MarcaEquipo_id')->references('id')->on('marcasequipos')->onDelete('cascade');
             $table->timestamps();
         });
+
+        $Modelo = new ModelosEquipos([
+            'ModeloEquipo' => 'Equipo Propio',
+            'MarcaEquipo_id' => 1
+        ]);
+        $Modelo->save();
     }
 
     /**

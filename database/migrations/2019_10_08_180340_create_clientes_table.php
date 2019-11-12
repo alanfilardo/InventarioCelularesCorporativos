@@ -19,7 +19,7 @@ class CreateClientesTable extends Migration
             $table->string('apellidocliente');
             $table->unsignedInteger('lineaid')->unique();
             $table->foreign('lineaid')->references('id')->on('lineas')->onDelete('cascade');
-            $table->unsignedInteger('equipoid')->unique();
+            $table->unsignedInteger('equipoid');
             $table->foreign('equipoid')->references('id')->on('equipos')->onDelete('cascade');
             $table->unsignedInteger('sucursalid');
             $table->foreign('sucursalid')->references('id')->on('sucursales')->onDelete('cascade');
