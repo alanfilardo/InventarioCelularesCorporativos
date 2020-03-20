@@ -76,7 +76,7 @@ class ClientesController extends Controller
         $Cuentas->save();
         //Si el request trae un equipo a asignar diferente de uno, quiere decir que el equipo es de la empresa
         //entonces hay que quitarlo de la lista de equipos libres.
-        if ($request->EquipoCliente =! 1){
+        if ($request->EquipoCliente != 1){
             Equipos::find($request->EquipoCliente)->update(['Asignado' => true]);
         }
         

@@ -38,7 +38,7 @@
         <select class="bloque" name="EquipoCliente" id="EquipoCliente" required disabled>
             <option value="1" selected disabled hidden>Seleccionar Equipo</option>
             @foreach ($Equipos as $Equipo)
-                @if ($Equipo->id =! 1)
+                @if ($Equipo->id != 1)
                     <option value="{{ $Equipo->id }}">{{ $Equipo->imei }}</option>
                 @endif
             @endforeach
